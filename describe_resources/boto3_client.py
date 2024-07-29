@@ -20,5 +20,4 @@ class AWSClient:
 if __name__ == '__main__':
     client = AWSClient(region='us-west-2', profile_name='sie-cloud-laco-platsvcs-nonprod-zz-sjohal',
                        service_name='cloudformation').get_client()
-    # client = AWSClient(region='us-west-2', profile_name='sie-cloud-laco-platsvcs-nonprod-zz-sjohal')
 
