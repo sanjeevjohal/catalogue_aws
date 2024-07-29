@@ -5,6 +5,8 @@ import pandas as pd
 import os
 from datetime import datetime
 
+stackName = 'dummyvalue'
+
 
 class InstanceDescriber:
     def __init__(self, region: str, profile_name: str, service_name: str, filter_dict: Dict, service_type: str,
@@ -23,7 +25,7 @@ class InstanceDescriber:
             {
                 'Name': f'tag:{tag_key}',
                 'Values': [
-                    'hiraku-airflow2',
+                    stackName,
                 ]
             },
         ]
