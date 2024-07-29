@@ -4,12 +4,13 @@ from botocore.client import BaseClient
 
 from boto3_client import AWSClient
 
+profile = 'dummyprofile'
 
 def describe_stack_resources(stack_name):
     """
     Returns a list of dictionaries describing the resources in the specified CloudFormation stack
     """
-    client = AWSClient(region='us-west-2', profile_name='sie-cloud-laco-platsvcs-nonprod-zz-sjohal',
+    client = AWSClient(region='us-west-2', profile_name=profile,
                        # TODO parameterize
                        service_name='cloudformation').get_client()
 
@@ -38,11 +39,10 @@ if __name__ == '__main__':
     from describe_resources import InstanceDescriber
 
     # hyper parameters
-    profile = 'sie-cloud-laco-platsvcs-nonprod-zz-sjohal'
+    profile = 'nonprod-zz-sjohal'
     debug_mode = True
-    tag_value = 'hiraku-airflow2'
-    stack_list = ['hiraku-airflow2-nonprod', 'hiraku-slo-nonprod']
-    # stack_list = ['hiraku-slo-nonprod']
+    tag_value = 'airflow'
+    stack_list = ['airflow-nonprod', 'slo-nonprod']
 
 
     # TODO use logger instead of print
@@ -100,7 +100,6 @@ if __name__ == '__main__':
         resource_physical_ids.append(cluster['Id'])
     # resource_physical_ids = response['Clusters'][0]
 
-    # resource_physical_id = 'j-1FUJJ3DVF4A0'
     for resource_physical_id in resource_physical_ids:
         boto3_client_type = resourcetype_to_service_dict[resource_service_type][0]
         boto3_client_servicetype = resourcetype_to_service_dict[resource_service_type][1]
